@@ -39,20 +39,39 @@ const STUDENTS = [
 
 const NEWSTUDENTS = [];
 
-for ( let object in STUDENTS){
+const container = document.querySelector(".container-card")
 
-  const student = STUDENTS[object];
+
+for ( let i = 0; i<STUDENTS.length; i++){
+  const student = STUDENTS[i];
   console.log('Singolo studente -->',student);
 
    const mediaVoti = calculateMedia(student) //Ottengo la media con una funzione
    console.log(mediaVoti) // MEdia dei voti
   
     const newStudentData = {
-      completeName : `${student.firstName}${student.lastName}`,
-      matricola : `${student.matricola}`,
+      completeName : `${student.firstName} ${student.lastName}`,
+      matricola : ` ${student.matricola}`,
       mediaDeiVoti : `${mediaVoti}`,
+      percorsofoto : `img/avatar${i}.jpg`
     }
     NEWSTUDENTS.push(newStudentData)
+
+    const cardStudent = 
+    `
+    <div class="card">
+    <div class="image">
+    <img src="img/avatar${i}.jpg" alt="">
+    </div>
+    <div class="description">
+      <h3>nome: ${newStudentData.completeName}</h3>
+      <p class="matricola"><strong>Matricola:${newStudentData.matricola}</strong></p>
+      <p>Media dei voti: ${mediaVoti}</p>
+    </div>
+  </div>
+    `;
+    console.log(newStudentData.percorsofoto)
+    container.innerHTML += cardStudent;
 }
 
 console.log(NEWSTUDENTS)
