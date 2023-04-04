@@ -37,15 +37,25 @@ const STUDENTS = [
   }
 ]
 
+const NEWSTUDENTS = [];
+
 for ( let object in STUDENTS){
 
   const student = STUDENTS[object];
-  console.log('tutti i voti dello studente -->',student); //Tutti i voti di ogni singolo studente
+  console.log('Singolo studente -->',student);
 
    const mediaVoti = calculateMedia(student) //Ottengo la media con una funzione
    console.log(mediaVoti) // MEdia dei voti
   
+    const newStudentData = {
+      completeName : `${student.firstName}${student.lastName}`,
+      matricola : `${student.matricola}`,
+      mediaDeiVoti : `${mediaVoti}`,
+    }
+    NEWSTUDENTS.push(newStudentData)
 }
+
+console.log(NEWSTUDENTS)
 
 
 
