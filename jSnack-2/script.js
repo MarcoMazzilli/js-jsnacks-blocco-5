@@ -3,37 +3,37 @@ const STUDENTS = [
     firstName : "Mario",
     lastName : "Rossi",
     matricola : getRandomNumbers(1000,5000),
-    voti : [1,2,3,4,5]
+    voti : votiRandom()
   },
   {
     firstName : "Giuseppe",
     lastName : "Verdi",
     matricola : getRandomNumbers(1000,5000),
-    voti : [6,7,8,9,10]
+    voti : votiRandom()
   },
   {
     firstName : "Alberto",
     lastName : "Solenne",
     matricola : getRandomNumbers(1000,5000),
-    voti : [10,9,8,7,6]
+    voti : votiRandom()
   },
   {
     firstName : "Angelo",
     lastName : "Andorra",
     matricola : getRandomNumbers(1000,5000),
-    voti : [5,4,3,2,1]
+    voti : votiRandom()
   },
   {
     firstName : "Umberto",
     lastName : "Zavorra",
     matricola : getRandomNumbers(1000,5000),
-    voti : [12,5,7,8,3]
+    voti : votiRandom()
   },
   {
     firstName : "Serena",
     lastName : "Dellavia",
     matricola : getRandomNumbers(1000,5000),
-    voti : [5,5,5,5,5]
+    voti : votiRandom()
   }
 ]
 
@@ -41,8 +41,11 @@ const NEWSTUDENTS = [];
 
 const container = document.querySelector(".container-card")
 
+/* **********************************************
+                      EVENTI
+*************************************************/
 
-for ( let i = 0; i<STUDENTS.length; i++){
+for ( let i = 0; i < STUDENTS.length ; i++){
   const student = STUDENTS[i];
   console.log('Singolo studente -->',student);
 
@@ -57,19 +60,22 @@ for ( let i = 0; i<STUDENTS.length; i++){
     }
     NEWSTUDENTS.push(newStudentData)
 
-    const cardStudent = 
-    `
+    const cardStudent =  `
     <div class="card">
-    <div class="image">
-    <img src="img/avatar${i}.jpg" alt="">
+
+      <div class="image">
+        <img src="img/avatar${i}.jpg" alt="">
+      </div>
+
+      <div class="description">
+        <h3>nome: ${newStudentData.completeName}</h3>
+        <p class="matricola"><strong>Matricola:${newStudentData.matricola}</strong></p>
+        <p>Media dei voti: ${mediaVoti}</p>
+      </div>
+
     </div>
-    <div class="description">
-      <h3>nome: ${newStudentData.completeName}</h3>
-      <p class="matricola"><strong>Matricola:${newStudentData.matricola}</strong></p>
-      <p>Media dei voti: ${mediaVoti}</p>
-    </div>
-  </div>
     `;
+    
     console.log(newStudentData.percorsofoto)
     container.innerHTML += cardStudent;
 }
@@ -94,7 +100,7 @@ function calculateMedia(studente){
     sommaVoti += votoSingolo;
   }) ;
   //Per scoprire la media prendo la somma dei voti e la divido per il N. di voti 
-  mediaVoti = sommaVoti / studente.voti.length;
+  mediaVoti = (sommaVoti / studente.voti.length).toFixed(1);
 
   // console.log("media dei voti",mediaVoti);
   return mediaVoti
@@ -104,4 +110,19 @@ function calculateMedia(studente){
 function getRandomNumbers(max,min){
   return numbers = Math.floor(Math.random()* (max - min + 1)) + min;
 }
+
+
+
+ function votiRandom(){
+
+   const votiStudente = [];
+   for (let i = 0; i < getRandomNumbers(1,7); i++) {
+     const voto = getRandomNumbers(1,10)
+     votiStudente.push(voto)
+     
+    }
+    console.log('abdulllla',votiStudente)
+    return votiStudente;
+  }
+
 
