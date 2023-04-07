@@ -37,6 +37,6 @@ console.log(utentiMinorenni)
 const utentiMaggiorenne = users.filter( (user) => user.age >= 18 && user.age <= 65 )
 console.log(utentiMaggiorenne)
 
-const utentiOver = users.filter( (user) => user.age > 65 )
+const utentiOver = users.filter(user => user.age > 65 )
 console.log(utentiOver)
 
